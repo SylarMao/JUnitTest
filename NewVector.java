@@ -35,7 +35,7 @@ class NewVector
         }
     }
 
-    public void append(double[] doubleArray)
+    NewVector append(double[] doubleArray)
     {
         int i,j;
         double[] temp = new double[list.length+doubleArray.length];
@@ -43,14 +43,13 @@ class NewVector
         {
             temp[i]=list[i];
         }
-        i+=1;
+        i=list.length;
         for(j=0;j<doubleArray.length;j++)
         {
             temp[i]=doubleArray[j];
             i+=1;
         }
-        list=temp;
-        new NewVector(list);
+        return new NewVector(temp);
     }
 
     NewVector append(int[] intArray)
