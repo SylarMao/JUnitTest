@@ -47,6 +47,7 @@ class NewVector
         for(j=0;j<doubleArray.length;j++)
         {
             temp[i]=doubleArray[j];
+            i+=1;
         }
         list=temp;
         new NewVector(list);
