@@ -55,19 +55,35 @@ class NewVector
     NewVector append(int[] intArray)
     {
         int i,j;
-        double[] temp = new double[intArray.length];
-        for(i = 0; i<intArray.length;i++)
+        double[] temp = new double[intArray.length+list.length];
+        for(i = 0; i<list.length;i++)
         {
-            temp[i]=intArray[i];
+            temp[i]=list[i];
         }
-        append(temp);
-        return new NewVector(list);
+        i=list.length;
+        for(j=0;j<intArray.length;j++)
+        {
+            temp[i]=intArray[j];
+            i+=1;
+        }
+        return new NewVector(temp);
     }
 
     NewVector append(NewVector V)
     {
-        append(V.list);
-        return new NewVector(list);
+        int i,j;
+        double[] temp = new double[V.list.length+list.length];
+        for(i = 0; i<list.length;i++)
+        {
+            temp[i]=list[i];
+        }
+        i=list.length;
+        for(j=0;j<V.list.length;j++)
+        {
+            temp[i]=V.list[j];
+            i+=1;
+        }
+        return new NewVector(temp);
     }
 
     NewVector append (double D)
@@ -78,11 +94,11 @@ class NewVector
         {
             temp.list[i]=list[i];
         }
-        temp.list[i+1]=D;
+        temp.list[i]=D;
         return temp;
     }
 
-    NewVector NewClone()
+    protected NewVector clone()
     {
         NewVector temp = new NewVector(list);
         return temp;
@@ -247,5 +263,13 @@ class NewVector
             }
         }
         return sqrt(temp);
+    }
+
+    public void display()
+    {
+        for(int i=0;i<list.length;i++)
+        {
+            System.out.println(list[i]);
+        }
     }
 }
