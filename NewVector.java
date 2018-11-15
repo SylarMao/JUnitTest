@@ -98,10 +98,10 @@ class NewVector
         return temp;
     }
 
-    protected NewVector clone()
-    {
-        NewVector temp = new NewVector(list);
-        return temp;
+    @Override
+    protected NewVector clone() throws CloneNotSupportedException {
+        NewVector newVector = (NewVector) super.clone();
+        return new NewVector(list);
     }
 
     Boolean equal(NewVector V)
@@ -221,9 +221,9 @@ class NewVector
         return new NewVector(list);
     }
 
-    Vector Normalize()
+    Vector<Double> Normalize()
     {
-        Vector temp = new Vector(list.length);
+        Vector<Double> temp = new Vector<>(list.length);
         for (double aList : list) {
             temp.add(aList);
         }
@@ -267,9 +267,8 @@ class NewVector
 
     public void display()
     {
-        for(int i=0;i<list.length;i++)
-        {
-            System.out.println(list[i]);
+        for (double aList : list) {
+            System.out.println(aList);
         }
     }
 }
